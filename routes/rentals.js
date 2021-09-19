@@ -5,14 +5,15 @@ const Fawn = require("fawn");
 const { Customer } = require("../models/customer");
 const { Movie } = require("../models/movie");
 const { Rental, validateRental, validateId } = require("../models/rental");
+const auth = require("../middlewares/auth");
 
 Fawn.init(mongoose);
 
-router.get("/", getRentals);
-router.post("/", createRental);
-router.put("/:id", updateRental);
-router.delete("/:id", deleteRental);
-router.get("/:id", getRentalById);
+router.get("/", auth, getRentals);
+router.post("/", auth, createRental);
+router.put("/:id", auth, updateRental);
+router.delete("/:id", auth, deleteRental);
+router.get("/:id", auth, getRentalById);
 
 async function getRentals(req, res) {
   try {

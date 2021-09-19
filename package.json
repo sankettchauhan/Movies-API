@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest ./tests --runInBand --forceExit --verbose --watchAll"
+    "test": "jest ./tests --runInBand --forceExit --verbose"
   },
   "engines": {
     "node": "14.17.3"

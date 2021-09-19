@@ -1,6 +1,6 @@
 const request = require("supertest");
 const { Customer } = require("../../models/customer");
-const mongoose = require("mongoose");
+const { User } = require("../../models/user");
 
 describe("/api/customers", () => {
   let server;
@@ -12,21 +12,26 @@ describe("/api/customers", () => {
   beforeEach(async () => {
     server = require("../../index");
   });
+
   afterEach(async () => {
     await server.close();
-    // await Customer.deleteMany({});
+    await Customer.deleteMany({});
   });
 
   it("should start testing customers route", () => {});
 
   describe("POST /", () => {
     const exec = () =>
-      request(server).post("/api/customers").send({ name, isGold, phone });
+      request(server)
+        .post("/api/customers")
+        .set("x-auth-token", token)
+        .send({ name, isGold, phone });
 
     beforeEach(async () => {
       name = "12345";
       isGold = true;
       phone = "1234567890";
+      token = new User().generateAuthToken();
     });
 
     it("should return 400 if name is not valid", async () => {

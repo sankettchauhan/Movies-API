@@ -5,11 +5,11 @@ const auth = require("../middlewares/auth");
 const admin = require("../middlewares/admin");
 const validateObjectId = require("../middlewares/validateObjectId");
 
-router.get("/", getGenres);
+router.get("/", auth, getGenres);
 router.post("/", auth, createGenre);
 router.put("/:id", validateObjectId, updateGenre);
 router.delete("/:id", [validateObjectId, auth, admin], deleteGenre);
-router.get("/:id", validateObjectId, getGenreById);
+router.get("/:id", [validateObjectId, auth], getGenreById);
 
 async function getGenres(req, res) {
   const result = await Genre.find();

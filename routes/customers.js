@@ -1,4 +1,5 @@
 const express = require("express");
+const auth = require("../middlewares/auth");
 const validate = require("../middlewares/validate");
 const router = express.Router();
 const {
@@ -7,11 +8,11 @@ const {
   validateId,
 } = require("../models/customer");
 
-router.get("/", getCustomers);
-router.post("/", validate(validateCustomer), createCustomer);
-router.put("/:id", updateCustomer);
-router.delete("/:id", deleteCustomer);
-router.get("/:id", getCustomerById);
+router.get("/", auth, getCustomers);
+router.post("/", [validate(validateCustomer), auth], createCustomer);
+router.put("/:id", auth, updateCustomer);
+router.delete("/:id", auth, deleteCustomer);
+router.get("/:id", auth, getCustomerById);
 
 async function getCustomers(req, res) {
   const cutomers = await Customer.find();

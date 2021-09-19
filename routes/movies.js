@@ -1,13 +1,14 @@
 const express = require("express");
+const auth = require("../middlewares/auth");
 const { Genre, validateId: validateGenreId } = require("../models/genre");
 const router = express.Router();
 const { Movie, validateMovie, validateId } = require("../models/movie");
 
-router.get("/", getMovies);
-router.post("/", createMovie);
-router.put("/:id", updateMovie);
-router.delete("/:id", deleteMovie);
-router.get("/:id", getMovieById);
+router.get("/", auth, getMovies);
+router.post("/", auth, createMovie);
+router.put("/:id", auth, updateMovie);
+router.delete("/:id", auth, deleteMovie);
+router.get("/:id", auth, getMovieById);
 
 async function getMovies(req, res) {
   try {

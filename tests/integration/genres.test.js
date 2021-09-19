@@ -5,10 +5,11 @@ const mongoose = require("mongoose");
 
 let server;
 
-describe("/api/genre", () => {
+describe("/api/genres", () => {
   beforeEach(() => {
     server = require("../../index");
   });
+
   afterEach(async () => {
     await Genre.deleteMany({});
     await server.close();
@@ -22,8 +23,11 @@ describe("/api/genre", () => {
         { name: "genre1" },
         { name: "genre2" },
       ]);
+      const token = new User().generateAuthToken();
 
-      const res = await request(server).get("/api/genre");
+      const res = await request(server)
+        .get("/api/genres")
+        .set("x-auth-token", token);
       // console.log(res.body);
       expect(res.status).toBe(200);
       expect(res.body.length).toBe(2);
@@ -36,20 +40,26 @@ describe("/api/genre", () => {
     it("should return genre if valid id is passed", async () => {
       let genre = new Genre({ name: "genre1" });
       genre = await genre.save();
+      const token = new User().generateAuthToken();
 
-      const res = await request(server).get(`/api/genre/${genre._id}`);
+      const res = await request(server)
+        .get(`/api/genres/${genre._id}`)
+        .set("x-auth-token", token);
       expect(res.status).toBe(200);
       expect(res.body.name).toBe("genre1");
     });
 
     it("should return 404 if valid id is not passed", async () => {
-      const res = await request(server).get(`/api/genre/1`);
+      const res = await request(server).get(`/api/genres/1`);
       expect(res.status).toBe(404);
     });
 
     it("should return 404 if genre with given id does not exist", async () => {
       const id = mongoose.Types.ObjectId();
-      const res = await request(server).get(`/api/genre/${id}`);
+      const token = new User().generateAuthToken();
+      const res = await request(server)
+        .get(`/api/genres/${id}`)
+        .set("x-auth-token", token);
       expect(res.status).toBe(404);
     });
   });
@@ -60,7 +70,7 @@ describe("/api/genre", () => {
 
     const exec = async () => {
       return await request(server)
-        .post("/api/genre")
+        .post("/api/genres")
         .set("x-auth-token", token)
         .send({ name });
     };
@@ -110,7 +120,7 @@ describe("/api/genre", () => {
 
     const exec = async () => {
       return await request(server)
-        .put("/api/genre/" + id)
+        .put("/api/genres/" + id)
         .set("x-auth-token", token)
         .send({ name });
     };
