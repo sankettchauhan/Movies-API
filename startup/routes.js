@@ -7,8 +7,10 @@ const users = require("../routes/users");
 const auth = require("../routes/auth");
 const returns = require("../routes/returns");
 const error = require("../middlewares/error");
+const cors = require("cors");
 
 module.exports = function (app) {
+  app.use(cors());
   app.use(express.json());
   app.get("/", (req, res) => {
     res.send("Vidly API is running(23/9/2021)..");
