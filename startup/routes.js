@@ -11,7 +11,7 @@ const error = require("../middlewares/error");
 module.exports = function (app) {
   app.use(express.json());
   app.get("/", (req, res) => {
-    res.send("Vidly API is running..");
+    res.send("Vidly API is running(23/9/2021)..");
   });
   app.use("/api/genres", genres);
   app.use("/api/customers", customers);
