@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/auth");
 const { User, validateUser } = require("../models/user");
 
-router.post("/", auth, createUser);
+router.post("/", createUser);
 router.get("/me", auth, getUser);
 
 async function createUser(req, res) {
