@@ -39,6 +39,7 @@ async function createRental(req, res) {
 
     let rental = new Rental({
       ...req.body,
+      dateOut: new Date(),
       movie: {
         _id: movie._id,
         title: movie.title,
