@@ -14,6 +14,7 @@ router.post("/", auth, createRental);
 router.put("/:id", auth, updateRental);
 router.delete("/:id", auth, deleteRental);
 router.get("/:id", auth, getRentalById);
+router.get("/customer/:customerId", auth, getRentalsOfCustomer);
 
 async function getRentals(req, res) {
   try {
@@ -49,6 +50,7 @@ async function createRental(req, res) {
         _id: customer._id,
         name: customer.name,
         phone: customer.phone,
+        isGold: customer.isGold,
       },
     });
     try {
@@ -118,4 +120,17 @@ async function getRentalById(req, res) {
   }
 }
 
+async function getRentalsOfCustomer(req, res) {
+  try {
+    const customerId = req.params.customerId;
+    console.log("customerId: ", customerId);
+    let rentals;
+    await Rental.find({}, (err, res) => {
+      rentals = res.filter((rental) => rental.customer._id.equals(customerId));
+    });
+    res.status(200).send(rentals);
+  } catch (error) {
+    res.status(400).send(`Error : ${error.message}`);
+  }
+}
 module.exports = router;
