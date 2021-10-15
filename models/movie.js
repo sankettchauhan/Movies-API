@@ -10,10 +10,12 @@ const movieSchema = mongoose.Schema({
     minlength: 3,
     maxlength: 255,
   },
-  genre: {
-    type: genreSchema,
-    required: true,
-  },
+  genres: [
+    {
+      type: genreSchema,
+      required: true,
+    },
+  ],
   numberInStock: {
     type: Number,
     required: true,
@@ -39,7 +41,8 @@ function validateMovie(movie) {
     title: Joi.string().min(3).max(30).required(),
     numberInStock: Joi.number().min(0).required(),
     dailyRentalRate: Joi.number().min(0).required(),
-    genreId: Joi.objectId().required(),
+    // genre: Joi.objectId().required(),
+    genreIds: Joi.array().items(Joi.objectId()),
   });
   return schema.validate(movie);
 }

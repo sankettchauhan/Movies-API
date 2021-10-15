@@ -1781,3 +1781,42 @@
 {"meta":{"errors":{"rentalFee":{"name":"ValidatorError","message":"Path `rentalFee` (-20) is less than minimum allowed value (0).","properties":{"message":"Path `rentalFee` (-20) is less than minimum allowed value (0).","type":"min","min":0,"path":"rentalFee","value":-20},"kind":"min","path":"rentalFee","value":-20}},"_message":"Rental validation failed","name":"ValidationError","message":"Rental validation failed: rentalFee: Path `rentalFee` (-20) is less than minimum allowed value (0)."},"level":"error","message":"Rental validation failed: rentalFee: Path `rentalFee` (-20) is less than minimum allowed value (0)."}
 {"meta":{"errors":{"rentalFee":{"name":"ValidatorError","message":"Path `rentalFee` (-20) is less than minimum allowed value (0).","properties":{"message":"Path `rentalFee` (-20) is less than minimum allowed value (0).","type":"min","min":0,"path":"rentalFee","value":-20},"kind":"min","path":"rentalFee","value":-20}},"_message":"Rental validation failed","name":"ValidationError","message":"Rental validation failed: rentalFee: Path `rentalFee` (-20) is less than minimum allowed value (0)."},"level":"error","message":"Rental validation failed: rentalFee: Path `rentalFee` (-20) is less than minimum allowed value (0)."}
 {"meta":{"errors":{"rentalFee":{"name":"ValidatorError","message":"Path `rentalFee` (-20) is less than minimum allowed value (0).","properties":{"message":"Path `rentalFee` (-20) is less than minimum allowed value (0).","type":"min","min":0,"path":"rentalFee","value":-20},"kind":"min","path":"rentalFee","value":-20},"movie.title":{"name":"ValidatorError","message":"Path `title` (`YJHD`) is shorter than the minimum allowed length (5).","properties":{"message":"Path `title` (`YJHD`) is shorter than the minimum allowed length (5).","type":"minlength","minlength":5,"path":"title","value":"YJHD"},"kind":"minlength","path":"title","value":"YJHD"},"movie":{"errors":{"title":{"name":"ValidatorError","message":"Path `title` (`YJHD`) is shorter than the minimum allowed length (5).","properties":{"message":"Path `title` (`YJHD`) is shorter than the minimum allowed length (5).","type":"minlength","minlength":5,"path":"title","value":"YJHD"},"kind":"minlength","path":"title","value":"YJHD"}},"_message":"Validation failed","name":"ValidationError","message":"Validation failed: title: Path `title` (`YJHD`) is shorter than the minimum allowed length (5)."}},"_message":"Rental validation failed","name":"ValidationError","message":"Rental validation failed: rentalFee: Path `rentalFee` (-20) is less than minimum allowed value (0)., movie.title: Path `title` (`YJHD`) is shorter than the minimum allowed length (5)., movie: Validation failed: title: Path `title` (`YJHD`) is shorter than the minimum allowed length (5)."},"level":"error","message":"Rental validation failed: rentalFee: Path `rentalFee` (-20) is less than minimum allowed value (0)., movie.title: Path `title` (`YJHD`) is shorter than the minimum allowed length (5)., movie: Validation failed: title: Path `title` (`YJHD`) is shorter than the minimum allowed length (5)."}
+{"message":"Listening at http://localhost:5000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"meta":{},"level":"error","message":"genre is not defined"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"meta":{},"level":"error","message":"genreId is not defined"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}
+{"meta":{},"level":"error","message":"Cannot read property '_id' of null"}
+{"message":"Listening at http://localhost:3000","level":"info"}
+{"message":"Connected to mongodb://localhost:27017/vidly..","level":"info"}

@@ -20,20 +20,29 @@ async function getMovies(req, res) {
 }
 
 async function createMovie(req, res) {
-  const { error: errorMovie } = validateMovie(req.body);
+  const { error } = validateMovie(req.body);
   // const { error: errorGenre } = validateGenreId(req.body.genreId);
-  if (errorMovie) return res.status(400).send(errorMovie.details[0].message);
+  if (error) return res.status(400).send(error.details[0].message);
   // if (errorGenre) return res.status(400).send(errorGenre.details[0].message);
   else {
-    let genre = await Genre.findById(req.body.genreId);
+    // check if the genre sent is valid (with the db)
+    let genres = req.body.genreIds;
+    // create a promise array for all the genres
+    let genresPromises = genres.map((genreId) => Genre.findById(genreId));
+    // await res from all the promises
+    genres = await Promise.all(genresPromises);
+    // create a movie
     let movie = new Movie({
       ...req.body,
-      genre: { id: genre._id, name: genre.name },
+      genres: genres.map((genre) => ({ id: genre._id, name: genre.name })),
     });
     try {
+      // try saving in the db
       movie = await movie.save();
+      // send success res
       res.status(201).send(movie);
     } catch (error) {
+      // send error if failed
       res.status(400).send(`Error: ${error.message}`);
     }
   }
