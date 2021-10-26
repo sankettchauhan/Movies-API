@@ -79,6 +79,13 @@ function validateRental(rental) {
   return schema.validate(rental);
 }
 
+function validateRentalId(rental) {
+  const schema = Joi.object({
+    rentalId: Joi.objectId().required(),
+  });
+  return schema.validate(rental);
+}
+
 function validateId(id) {
   const schema = Joi.object({
     id: Joi.string()
@@ -88,4 +95,4 @@ function validateId(id) {
   return schema.validate({ id });
 }
 
-module.exports = { Rental, validateRental, validateId };
+module.exports = { Rental, validateRental, validateId, validateRentalId };

@@ -121,9 +121,10 @@ async function getRentalById(req, res) {
 }
 
 async function getRentalsOfCustomer(req, res) {
+  const customerId = req.params.customerId;
+  const { error } = validateId(customerId);
+  if (error) return res.status(400).send(error.details[0].message);
   try {
-    const customerId = req.params.customerId;
-    console.log("customerId: ", customerId);
     let rentals;
     await Rental.find({}, (err, res) => {
       rentals = res.filter((rental) => rental.customer._id.equals(customerId));

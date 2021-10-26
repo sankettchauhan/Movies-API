@@ -1,15 +1,18 @@
 const express = require("express");
 const auth = require("../middlewares/auth");
 const validate = require("../middlewares/validate");
-const { validateRental, Rental } = require("../models/rental");
+const { validateRentalId, Rental, validateId } = require("../models/rental");
 const router = express.Router();
 const { Movie } = require("../models/movie");
 
-router.post("/", [auth, validate(validateRental)], postReturn);
+router.post("/", [auth, validate(validateRentalId)], postReturn);
 
 async function postReturn(req, res) {
-  const { customerId, movieId } = req.body;
-  const rental = await Rental.lookup(customerId, movieId);
+  const { rentalId } = req.body;
+  const { error } = validateId(rentalId);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const rental = await Rental.findById(rentalId);
 
   if (!rental) return res.status(404).send("Rental not found");
 
